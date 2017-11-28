@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 
 /**
  * Generated class for the NotePage page.
@@ -15,11 +15,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NotePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public note: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+    this.note = this.navParams.get('note');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NotePage');
+  closeModal() {
+    this.viewCtrl.dismiss();
   }
 
 }

@@ -1,3 +1,22 @@
 page-user-notes {
+  .cover {
+    background: color($colors, primary);
+    min-height: 200px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: -10px;
 
+    img {
+      margin-top: 25px;
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      border: 1px solid color($colors, border);
+    }
+
+    h1 {
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+  }
 }

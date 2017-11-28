@@ -1,5 +1,6 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
+//@import url('http://fonts.googleapis.com/css?family=Grand+Hotel');
 
 // Font path is used to include ionicons,
 // roboto, and noto sans fonts
@@ -38,7 +39,8 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  border:     #f9f9f9,
 );
 
 

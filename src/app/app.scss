@@ -15,6 +15,58 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.auth-form {
+  background: url('../assets/imgs/ionic_bg.jpg') top center no-repeat;
+  background-size: cover;
+
+  .card {
+    border-radius: 12px !important;
+
+    .list-ios[inset], .list-md[inset] {
+      margin: 16px 0;
+      pading: 10px;
+    }
+  }
+
+  .icon-login {
+    //width: 65%;
+    margin: 20px 12px;
+    background-color: #fff;
+    border-radius: 15px;
+    border: 1px solid color($colors, border);
+    padding: 15px;
+    text-align: center;
+    opacity: 0.5;
+
+    ion-icon {
+      font-size: 4em !important;
+    }
+
+    h1 {
+      //font-family: $grand-hotel;
+      //text-transform: uppercase;
+      font-weight: bold;
+      font-style: italic;
+    }
+  }
+
+  span {
+    margin-top: 15px;
+    color: darken(color($colors, primary), 25%);
+    text-transform: uppercase;
+  }
+
+
+}
+
+.content {
+  button {
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+  }
+}
+
+
 .toast-success {
   .toast-container{
     background-color: color($colors, primary) !important;

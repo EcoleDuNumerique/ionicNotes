@@ -24,6 +24,13 @@ export class AuthProvider {
     });
   }
 
+  /**
+   * Requête de connexion
+   *
+   * @param email
+   * @param password
+   * @returns {Observable<Object>}
+   */
   login(email, password) {
     return this.api.post('auth/connexion', {
       email: email,
@@ -31,8 +38,33 @@ export class AuthProvider {
     });
   }
 
+  /**
+   * Requête d'inscription
+   *
+   * @param data
+   * @returns {Observable<Object>}
+   */
   register(data) {
     return this.api.post('auth/inscription', data);
+  }
+
+  /**
+   * Requête pour récupérer les données de l'utilisateur courant
+   *
+   * @returns {Observable<Object>}
+   */
+  getAccountData() {
+    return this.api.get('account');
+  }
+
+  /**
+   * Mise à jour des données du compte
+   *
+   * @param data
+   * @returns {Observable<Object>}
+   */
+  updateAccount(data) {
+    return this.api.post('account/update', data);
   }
 
 }

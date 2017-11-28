@@ -9,17 +9,22 @@ import {AuthService} from "../../../services/auth";
 })
 export class AuthPage {
 
-  public isAuth: boolean = false;
-
-  constructor(public authService: AuthService, public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, public authService: AuthService) {}
 
   ionViewCanEnter() {
+    console.log(this.authService.isAuth);
+    if( !this.authService.isAuth ) {
+      this.navCtrl.setRoot('LoginPage');
+    }
+
+    /*
     this.authService.checkAuthentified().then(auth => {
       console.log(auth);
         if( !auth ) {
-        this.navCtrl.setRoot('AuthTabsPage');
+
       }
     });
+    */
   }
 
 }

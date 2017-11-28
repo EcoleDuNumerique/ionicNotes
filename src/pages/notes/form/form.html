@@ -1,18 +1,32 @@
-<!--
-  Generated template for the FormPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>form</ion-title>
+    <ion-title>{{ pageTitle }}</ion-title>
+    <ion-buttons right end>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content padding class="auth-form">
+  <form [formGroup]="noteData" (ngSubmit)="submitForm()">
 
-<ion-content padding>
+    <ion-card>
+      <ion-list inset no-padding>
 
+        <ion-item>
+          <ion-input type="text" na placeholder="Titre de la note" formControlName="title"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-textarea rows="5" type="textarea" placeholder="Contenu" formControlName="content"></ion-textarea>
+        </ion-item>
+
+      </ion-list>
+      <button ion-item  color="primary" block full text-center [disabled]="!noteData.valid">Soumettre</button>
+    </ion-card>
+
+  </form>
 </ion-content>
+

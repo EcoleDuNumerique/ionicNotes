@@ -1,34 +1,39 @@
-<ion-header>
+<ion-content padding class="auth-form">
 
-  <ion-navbar>
-    <ion-title>M'enregistrer</ion-title>
-  </ion-navbar>
+  <div class="icon-login">
+    <ion-icon name="md-clipboard"></ion-icon>
+    <h1>IonicNotes</h1>
+  </div>
 
-</ion-header>
-
-
-<ion-content>
   <form [formGroup]="registerData" (ngSubmit)="submitRegistration()">
-  <ion-item>
-    <ion-input type="text" placeholder="Votre adresse email" formGroupName="email" ></ion-input>
-  </ion-item>
+    <ion-card>
+      <ion-list inset no-padding>
+        <ion-item>
+          <ion-input type="text" placeholder="Votre adresse email" formControlName="email"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-input type="text" placeholder="Votre nom" formGroupName="lastname" [formGroup]="registerData"></ion-input>
-  </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Votre nom" formControlName="lastname"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-input type="text" placeholder="Votre prénom" formGroupName="firstname" [formGroup]="registerData"></ion-input>
-  </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Votre prénom" formControlName="firstname"></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-input type="password" [formGroup]="registerData" placeholder="Mot de passe" formGroupName="password" ></ion-input>
-  </ion-item>
+        <ion-item>
+          <ion-input type="password" placeholder="Mot de passe" formControlName="password" ></ion-input>
+        </ion-item>
 
-  <ion-item>
-    <ion-input type="password" placeholder="Confirmation" [formGroup]="registerData" formGroupName="passwordConfirmation"></ion-input>
-  </ion-item>
+        <ion-item>
+          <ion-input type="password" placeholder="Confirmation" formControlName="passwordConfirmation"></ion-input>
+        </ion-item>
+      </ion-list>
 
-  <button ion-item  color="primary" block full text-center [disabled]="!registerData.valid">M'enregistrer</button>
+      <button ion-item  color="primary" block full text-center [disabled]="!registerData.valid">M'enregistrer</button>
+    </ion-card>
   </form>
+
+  <div text-center>
+    <span (click)="goToLogin()">J'ai déjà un compte</span>
+  </div>
 </ion-content>

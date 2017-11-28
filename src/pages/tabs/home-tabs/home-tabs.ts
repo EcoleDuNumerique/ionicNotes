@@ -1,24 +1,15 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
-import {AuthPage} from "../../auth/auth/auth";
-import {AuthService} from "../../../services/auth";
+import {Component} from '@angular/core';
+import {IonicPage, NavController} from 'ionic-angular';
 
 @IonicPage()
 @Component({
   selector: 'page-home-tabs',
   templateUrl: 'home-tabs.html'
 })
-export class HomeTabsPage extends AuthPage{
+export class HomeTabsPage {
 
   notesRoot = 'NotesPage';
   usersRoot = 'UsersPage';
 
-  constructor(public navCtrl: NavController, public authService: AuthService) {
-    super(authService, navCtrl);
-  }
-
-  ionViewCanEnter() {
-    super.ionViewCanEnter();
-  }
-
+  constructor(public navCtrl: NavController) {}
 }

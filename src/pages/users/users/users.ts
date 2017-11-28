@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the UsersPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {App, IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
+import {UserProvider} from "../../../providers/user/user";
 
 @IonicPage()
 @Component({
@@ -15,11 +9,42 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class UsersPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public users: any[] = [];
+  public count: number = 0;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public modalCtrl: ModalController, public app: App) {}
+
+  ionViewCanEnter(): Promise <any> {
+    return new Promise((resolve, reject) => {
+      this.userProvider.getAll().subscribe(response => {
+        this.users = response['users'];
+        this.count = response['count'];
+        resolve();
+      }, error => {
+        console.log(error);
+        reject();
+      });
+    });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UsersPage');
+  loadMore() {
+
   }
 
+  goToUserPage(id) {
+    let modal = this.modalCtrl.create('UserNotesPage', {id: id});
+    modal.present();
+  }
+
+  goToMyAccount() {
+    let modal = this.modalCtrl.create('AccountPage');
+    modal.present();
+
+
+    modal.onDidDismiss(data => {
+      if( data ) {
+        this.app.getRootNavs()[0].setRoot('LoginPage');
+      }
+    })
+  }
 }
