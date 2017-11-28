@@ -3,8 +3,8 @@ import {Injectable} from "@angular/core";
 @Injectable()
 
 /**
- * J'ai réalisé cette classe pour pousser la vérification des tokens un peu plus loins.
- * VOus pouvez la réutiliser dans vos projets sans soucis. Je ne vous demande pas de tout
+ * J'ai réalisé cette classe pour pousser la vérification des tokens un peu plus loin.
+ * Vous pouvez la réutiliser dans vos projets sans soucis. Je ne vous demande pas de tout
  * comprendre, mais pour les plus curieux, ça peut être sympa ;)
  */
 export class TokenExpiration {
