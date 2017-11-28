@@ -1,0 +1,16 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mes photos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="card-background-page">
+  <ion-card *ngFor="let picture of pictures">
+    <img [src]="picture.photoURL | cdvphotolibrary">
+    <div class="card-title">{{ picture.fileName }}</div>
+    <div class="card-subtitle">{{ picture.creationDate  }}</div>
+  </ion-card>
+
+</ion-content>

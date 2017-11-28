@@ -10,6 +10,7 @@ export class HomeTabsPage {
 
   notesRoot = 'NotesPage';
   usersRoot = 'UsersPage';
+  picturesRoot = 'PicturesPage';
 
   constructor(public navCtrl: NavController) {}
 }

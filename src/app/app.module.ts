@@ -20,6 +20,8 @@ import {Http} from "@angular/http";
 import {TokenExpiration} from "../services/token-expiration";
 import {Vibration} from "@ionic-native/vibration";
 import {SocialSharing} from "@ionic-native/social-sharing";
+import {PhotoLibrary} from "@ionic-native/photo-library";
+import {PhotoViewer} from "@ionic-native/photo-viewer";
 
 const storage = new Storage({});
 
@@ -79,6 +81,8 @@ export function jwtOptionsFactory() {
     //  On importe nos plugins
     Vibration,
     SocialSharing,
+    PhotoLibrary,
+    PhotoViewer,
   ]
 })
 export class AppModule {}
