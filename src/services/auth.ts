@@ -5,16 +5,36 @@ import {App, Events} from "ionic-angular";
 @Injectable()
 export class AuthService {
 
-  public id: number;
   public token: string;
+  public userId: number;
   public isAuth: boolean = false;
 
   constructor(public storage: Storage, public app: App, public events: Events){
     //this.storage.remove('access_token');
   }
 
+  setAuth(auth: boolean) {
+    this.isAuth = auth;
+  }
+
+  setUserId(id: number) {
+    this.userId = id;
+  }
+
+  setToken(token: string) {
+    this.token = token;
+  }
+
   getAuth() {
     return this.isAuth;
+  }
+
+  getUserId() {
+    return this.userId;
+  }
+
+  getToken() {
+    return this.token;
   }
 
   checkAuthentified(): Promise <any> {
@@ -31,13 +51,15 @@ export class AuthService {
     });
   }
 
+
+
   getId(): Promise <any> {
 
     return new Promise((resolve) => {
       this.storage.get('user_id').then(userId => {
         if( userId ) {
           console.log(userId);
-          this.id = userId;
+          this.userId = userId;
           resolve(userId);
           return userId;
         }
@@ -48,7 +70,7 @@ export class AuthService {
   }
 
   storeId(id) {
-    this.id = id;
+    this.userId = id;
     this.storage.set('user_id', id);
   }
 
@@ -59,7 +81,7 @@ export class AuthService {
     this.events.publish('user:login', true);
 
     if( id ) {
-      this.id = id;
+      this.userId = id;
       this.storage.set('user_id', id);
     }
     return this.storage.set('access_token', token);
@@ -71,21 +93,4 @@ export class AuthService {
       this.events.publish('user:login', false);
     });
   }
-
-
-  getToken() {
-    return this.token;
-    /*
-    return new Promise((resolve) => {
-      this.storage.get('access_token').then(token => {
-        console.log(token);
-        resolve(token);
-        return token;
-      });
-    });
-    /*
-
-     */
-  }
-
 }

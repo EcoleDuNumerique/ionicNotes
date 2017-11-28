@@ -18,6 +18,8 @@ import {TokenInterceptor} from "../services/token-interceptor";
 import {JWT_OPTIONS, JwtHelperService, JwtModule} from "@auth0/angular-jwt";
 import {Http} from "@angular/http";
 import {TokenExpiration} from "../services/token-expiration";
+import {Vibration} from "@ionic-native/vibration";
+import {SocialSharing} from "@ionic-native/social-sharing";
 
 const storage = new Storage({});
 
@@ -58,18 +60,25 @@ export function jwtOptionsFactory() {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    //  Intercepteur pour les requêtes http : vient rajouter le token dans le header
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
     },
+    //  On importe nos providers
     ApiProvider,
     UserProvider,
     NoteProvider,
     AuthProvider,
 
+    //  On importe nos services
     AuthService,
     TokenExpiration,
+
+    //  On importe nos plugins
+    Vibration,
+    SocialSharing,
   ]
 })
 export class AppModule {}

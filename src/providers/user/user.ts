@@ -7,7 +7,9 @@ export class UserProvider {
 
   constructor(public api: ApiProvider, public http: HttpClient) {}
 
-  getAll() {
+  getAll(offset ?: number) {
+
+
     return this.api.get('users');
   }
 

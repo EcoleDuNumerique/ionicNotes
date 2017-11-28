@@ -9,13 +9,26 @@ import {UserProvider} from "../../../providers/user/user";
 })
 export class UserNotesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public viewCtrl: ViewController, public modalCtrl: ModalController) {}
-
+  //  Notre utilisateur
   public user: any = null;
+
+  //  Les notes de cet utilisateur, tableau vide par défaut
   public notes: any[] = [];
 
   /**
-   * Récupère la liste des notes d'un utilisateur
+   * Constructeur
+   *
+   * @param {NavController} navCtrl
+   * @param {NavParams} navParams
+   * @param {UserProvider} userProvider
+   * @param {ViewController} viewCtrl
+   * @param {ModalController} modalCtrl
+   */
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider, public viewCtrl: ViewController, public modalCtrl: ModalController) {}
+
+  /**
+   * Récupère la liste des notes d'un utilisateur (grace à son ID)
+   *
    * @returns {Promise<any>}
    */
   ionViewCanEnter(): Promise <any> {
@@ -32,10 +45,18 @@ export class UserNotesPage {
     });
   }
 
+  /**
+   * Fermeture de la modale
+   */
   closeModal() {
     this.viewCtrl.dismiss();
   }
 
+  /**
+   * Ouverture d'une note : visualisation
+   *
+   * @param note
+   */
   openNote(note) {
     let modal = this.modalCtrl.create('NotePage', {note: note});
     modal.present();

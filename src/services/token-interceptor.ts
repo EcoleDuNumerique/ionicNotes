@@ -11,30 +11,50 @@ import {AuthService} from "./auth";
 
 @Injectable()
 
+/**
+ * Cette classe nous permet d'ajouter des éléments à nos requêtes
+ * à la volée, de sorte que ça soit transparent dans notre développement
+ */
 export class TokenInterceptor implements HttpInterceptor {
 
+  /**
+   * Constructeur
+   * @param {AuthService} authService
+   */
   constructor(public authService: AuthService) {
     console.log(this.authService.getToken());
   }
 
+  /**
+   * Fonction d'interception des requêtes
+   *
+   * @param {HttpRequest<any>} request
+   * @param {HttpHandler} next
+   * @returns {Observable<HttpEvent<any>>}
+   */
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable <HttpEvent <any> > {
 
-    console.log(this.authService.getToken());
-
+    //  On clone la requête interceptée, et on lui rajoute notre header d'autorisation (token)
     request = request.clone({
       setHeaders: {
         Authorization: 'Bearer ' + this.authService.getToken()
       }
     });
 
+    //  On retourne notre requête comme si de rien n'était
     return next.handle(request).do((event: HttpEvent <any>) => {
       if( event instanceof HttpResponse ) {
-        //  à priori on ne fait rien ;)
+        /**
+         * Pour pousser le vice, on pourrait imaginer un cache ici pour stocker certains
+         * résultats de page, pour économiser notre application.
+         */
       }
     }, error => {
       if( error instanceof  HttpErrorResponse ) {
         if( error.status === 401 ) {
-          //  On peut prévoir une erreur ici
+          /**
+           * On pourrait prévoir des pages d'erreurs personnalisés pour éviter les plantages
+           */
         }
       }
     });

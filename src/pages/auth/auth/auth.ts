@@ -9,6 +9,14 @@ import {AuthService} from "../../../services/auth";
 })
 export class AuthPage {
 
+  /**
+   * Au final, on ne sert pas de cette page, mais vous pourriez l'utiliser comme page parente d'autres
+   * pages pour vérifier la connexion d'un utilisateur, au lieu d'un service.
+   *
+   * @param {NavController} navCtrl
+   * @param {AuthService} authService
+   */
+
   constructor(public navCtrl: NavController, public authService: AuthService) {}
 
   ionViewCanEnter() {
